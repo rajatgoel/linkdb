@@ -3,7 +3,6 @@ setup:
 
 gen:
         buf generate proto
-        cd internal/sqlbackend && sqlc generate
 
 lint: gen
         buf lint proto

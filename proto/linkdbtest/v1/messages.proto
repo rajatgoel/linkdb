@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package linkdbtest.v1;
+
+message DiskMeta {
+  string disk_id = 1;
+}
+
+message KeyMeta {
+  string value = 1;
+}
+
+message LinkDBMeta {
+  oneof meta {
+    DiskMeta disk_meta = 1;
+    KeyMeta key_meta = 2;
+  }
+}

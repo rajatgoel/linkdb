@@ -311,9 +311,7 @@ func (d *db[T]) Put(key string, t T, value []byte) error {
 	d.gaps[gapIdx] = d.gaps[len(d.gaps)-1]
 	d.gaps[len(d.gaps)-1] = nil
 	d.gaps = d.gaps[:len(d.gaps)-1]
-	for _, gap := range gapsToAdd {
-		d.gaps = append(d.gaps, gap)
-	}
+	d.gaps = append(d.gaps, gapsToAdd...)
 
 	d.keys[key] = kv
 	d.nextVersion++

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package linkdb.v1;
+
+import "google/protobuf/any.proto";
+
+message DiskHeader {
+  // Written when the disk is initially formatted to make sure
+  // these parameters do not change when disk is re-opened.
+  int64 block_size = 1;
+  int64 capacity = 2;
+  google.protobuf.Any metadata = 3;
+}
+
+message KeyValue {
+  int64 offset = 1;
+
+  string key = 2;
+  int64 version = 3;
+
+  int64 value_length = 4; // 0 if no value
+  uint64 value_checksum = 5; // value checksum
+  google.protobuf.Any metadata = 6;
+}
+
+message Gap {
+  int64 offset = 1;
+  int64 gap_length = 2;
+}
+
+message Wrapper {
+  oneof wrapped {
+    KeyValue key_value = 1;
+    Gap gap = 2;
+  }
+}

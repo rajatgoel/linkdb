@@ -3,7 +3,7 @@ module github.com/rajatgoel/linkdb
 go 1.21.0
 
 require (
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9
 	google.golang.org/protobuf v1.32.0
 )
